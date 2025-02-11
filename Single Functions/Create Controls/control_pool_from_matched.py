@@ -69,7 +69,7 @@ def create_pool(fracture_index = 0, pool_num = 0):
   fracture_patients.drop(columns=['batch', 'matched_with', 'relaxed'], inplace=True)
   
   cols = fracture_patients.columns.tolist()
-  cols = cols[:2] + cols[4:] + cols[3:4]
+  cols = cols[:3] + cols[4:] + cols[3:4]
   fracture_patients = fracture_patients[cols]
 
   # write
