@@ -20,9 +20,12 @@ def create_pool(fracture_index = 0, pool_num = 0):
   # count rows in fracture_patients
   fracture_patient_count = len(fracture_patients)
 
-  bank = pd.read_csv(copyTitle + '/patient_matching_bank.csv')
+  bank = pd.read_csv(copyTitle + '/Control Group 2/' + category_name + ' subset.csv')
+  
+  # remove rows from bank where batch is na
+  bank = bank[bank['batch'].notna()]
 
-  subset_size = fracture_patient_count * 5
+  subset_size = fracture_patient_count * 10
 
   # create a new dataframe with the same columns as the bank
   bank_subset = pd.DataFrame(columns=bank.columns)
@@ -43,7 +46,7 @@ def create_pool(fracture_index = 0, pool_num = 0):
       used_ids[random_patient_id] = True
       added += 1
     except KeyError:
-      print("Key Error:", random_index, len(bank))
+      # print("Key Error:", random_index, len(bank))
       continue
     
     # append one row to the subset
@@ -73,8 +76,8 @@ def create_pool(fracture_index = 0, pool_num = 0):
   fracture_patients = fracture_patients[cols]
 
   # write
-  fracture_patients.to_csv(copyTitle + '/Control Unmatched/' + category_name + '/5x/' + str(pool_num) + '.csv', index=False)
+  fracture_patients.to_csv(copyTitle + '/Control Semi-Matched/' + category_name + '/' + str(pool_num) + '.csv', index=False)
 
-for i in range(0, 5):
+for i in range(3, 4):
   for j in range(1,4):
     create_pool(i, j)

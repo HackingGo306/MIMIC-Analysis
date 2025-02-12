@@ -14,7 +14,7 @@ def split_pools(fracture_index = 0, pool_num = 0):
   category_name = categories[fracture_index]
 
   # write
-  file = pd.read_csv(copyTitle + '/Control Unmatched/' + category_name + '/5x/' + str(pool_num) + '.csv')
+  file = pd.read_csv(copyTitle + '/Control Semi-Matched/' + category_name + '/' + str(pool_num) + '.csv')
   
   
   male = file[file['gender'] == 'M']
@@ -24,6 +24,6 @@ def split_pools(fracture_index = 0, pool_num = 0):
   male.to_csv(copyTitle + '/Control Unmatched/' + category_name + '/male_' + str(pool_num) + '.csv', index=False)
   female.to_csv(copyTitle + '/Control Unmatched/' + category_name + '/female_' + str(pool_num) + '.csv', index=False)
   
-for i in range(0, 5):
+for i in range(3, 4):
   for j in range(1,4):
     split_pools(i, j)
