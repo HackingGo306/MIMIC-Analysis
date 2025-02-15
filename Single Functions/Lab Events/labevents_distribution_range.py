@@ -7,7 +7,7 @@ version = '3.0'
 folderTitle = f'/Users/cameron/mimic-iv-{version}/hosp'
 copyTitle = f'/Users/cameron/mimic-iv-{version}/hosp copy'
 
-distribution = pd.read_csv(copyTitle + '/Lab Events/labevents_with_labels_1_distribution_fluids.csv')
+distribution = pd.read_csv(copyTitle + '/Lab Events/labevents_distribution.csv')
 
 lower = {
   
@@ -23,9 +23,9 @@ for i in range(len(ranges) - 1):
   item_id = ranges['itemid'][i]
   low = ranges['ref_range_lower'][i]
   high = ranges['ref_range_upper'][i]
-  if (item_id not in lower and (pd.notna(low) and pd.notna(high))):
-    lower[item_id] = low
-    upper[item_id] = high
+  if ((pd.notna(low) and pd.notna(high))):
+    lower[item_id] = min(float(low), float(lower.get(item_id, 10000000)))
+    upper[item_id] = max(float(high), float(upper.get(item_id, -10000000)))
 
 # Now use the dictionary to modify the distribution table
 for i in range(len(distribution)):

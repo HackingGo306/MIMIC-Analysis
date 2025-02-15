@@ -31,7 +31,7 @@ print("Start")
 amount = 0
 batch_size = 15000000
   
-for df in pd.read_csv(folderTitle + '/labevents.csv', chunksize=batch_size):
+for df in pd.read_csv(copyTitle + '/Lab Events/labevents_with_labels_1.csv', chunksize=batch_size):
   for i in range(len(df)):
     if (i % 1500000 == 0):
       print(100 * (i / len(df)), "percent, ", end='')
@@ -75,5 +75,5 @@ for patient_id, lab_counts in patients.items():
   
 
 # Write it to a file inside hosp copy
-patient_labs.to_csv(copyTitle + '/Lab Events/patient_labs.csv', index=False)
+patient_labs.to_csv(copyTitle + '/Lab Events/patient_labs_subset1.csv', index=False)
 print("Finished")
