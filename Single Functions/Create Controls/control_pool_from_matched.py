@@ -24,6 +24,7 @@ def create_pool(fracture_index = 0, pool_num = 0):
   
   # remove rows from bank where batch is na
   bank = bank[bank['batch'].notna()]
+  bank = bank.reset_index(drop=True)
 
   subset_size = fracture_patient_count * 10
 
@@ -78,6 +79,6 @@ def create_pool(fracture_index = 0, pool_num = 0):
   # write
   fracture_patients.to_csv(copyTitle + '/Control Semi-Matched/' + category_name + '/' + str(pool_num) + '.csv', index=False)
 
-for i in range(3, 4):
+for i in range(4, 5):
   for j in range(1,4):
     create_pool(i, j)

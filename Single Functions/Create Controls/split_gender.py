@@ -21,9 +21,9 @@ def split_pools(fracture_index = 0, pool_num = 0):
   female = file[file['gender'] == 'F']
   
   #write both subsets
-  male.to_csv(copyTitle + '/Control Unmatched/' + category_name + '/male_' + str(pool_num) + '.csv', index=False)
-  female.to_csv(copyTitle + '/Control Unmatched/' + category_name + '/female_' + str(pool_num) + '.csv', index=False)
+  male.to_csv(copyTitle + '/Control Semi-Matched/' + category_name + '/male_' + str(pool_num) + '.csv', index=False)
+  female.to_csv(copyTitle + '/Control Semi-Matched/' + category_name + '/female_' + str(pool_num) + '.csv', index=False)
   
-for i in range(3, 4):
+for i in [1, 2, 4]:
   for j in range(1,4):
     split_pools(i, j)
