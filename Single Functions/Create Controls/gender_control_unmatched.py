@@ -79,7 +79,7 @@ def create_pool(fracture_index = 0, pool_num = 0, gender = 'M'):
   # write
   fracture_patients.to_csv(copyTitle + '/Control Semi-Matched/Gender Separated/' + category_name + '/Compare Group/' + gender + str(pool_num) + '.csv', index=False)
 
-for i in range(3, 4):
+for i in range(0, 1):
   for j in range(1,4):
     create_pool(i, j, 'F')
     create_pool(i, j, 'M')
