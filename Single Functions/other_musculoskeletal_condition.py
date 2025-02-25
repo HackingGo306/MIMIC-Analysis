@@ -25,7 +25,7 @@ for z in range(1, 4):
     if (condition != category):
       subject_other_msk[subject_id] = True
       
-  for i in range(0, len(data_file_M)):
+  for i in range(0, len(data_file_M)): 
     subject_id = data_file_M['subject_id'][i]
     if (subject_id in subject_other_msk):
       data_file_M.at[i, 'msk not ' + category] = True
