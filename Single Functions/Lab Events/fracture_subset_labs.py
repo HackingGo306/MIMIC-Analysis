@@ -38,13 +38,13 @@ for category in categories:
               if (col not in freq):
                 freq[col] = 0
               freq[col] += lab_item_frequencies[col][i]
-              
+
   # turn freq into file
   file = pd.DataFrame(columns = ['itemid', 'count'])
   for itemid, count in freq.items():
     file.loc[len(file)] = [itemid, count]
   file.to_csv(copyTitle + '/Lab Events/Subset Distributions/' + category + '_lab_item_frequency.csv', index=False)
-  
+
 
 freq = {}
 # Do one for everything
@@ -60,7 +60,7 @@ for i in range(len(lab_item_frequencies)):
         if (col not in freq):
           freq[col] = 0
         freq[col] += lab_item_frequencies[col][i]
-            
+
 # turn freq into file
 file = pd.DataFrame(columns = ['itemid', 'count'])
 for itemid, count in freq.items():
