@@ -12,8 +12,8 @@ categories = ['Pathologic fracture', 'Pathologic fracture of femur', 'Pathologic
 category = categories[3]
 
 for z in range(1, 4):
-  data_file_M = pd.read_csv(copyTitle + '/Control Semi-Matched/Gender Separated/' + category + '/1x/M' + str(z) + ".csv")
-  data_file_F = pd.read_csv(copyTitle + '/Control Semi-Matched/Gender Separated/' + category + '/1x/F' + str(z) + ".csv")
+  data_file_M = pd.read_csv(copyTitle + '/Control Semi-Matched/Gender Separated/' + category + '/10x/M' + str(z) + ".csv")
+  data_file_F = pd.read_csv(copyTitle + '/Control Semi-Matched/Gender Separated/' + category + '/10x/F' + str(z) + ".csv")
   
   subject_other_msk = {
     
@@ -47,5 +47,11 @@ for z in range(1, 4):
   cols = cols[:17] + cols[-1:] + cols[18:-1] + cols[17:18]
   data_file_F = data_file_F[cols]
       
-  data_file_M.to_csv(copyTitle + '/Control Semi-Matched/Gender Separated/' + category + '/1x/M' + str(z) + "_other.csv", index=False)
-  data_file_F.to_csv(copyTitle + '/Control Semi-Matched/Gender Separated/' + category + '/1x/F' + str(z) + "_other.csv", index=False)
+  data_file_M.to_csv(copyTitle + '/Control Semi-Matched/Gender Separated/' + category + '/10x/M' + str(z) + "_other.csv", index=False)
+  data_file_F.to_csv(copyTitle + '/Control Semi-Matched/Gender Separated/' + category + '/10x/F' + str(z) + "_other.csv", index=False)
+  
+  # Merge the two dataframes
+  data_file_M_F = pd.concat([data_file_M, data_file_F])
+  
+  # write
+  data_file_M_F.to_csv(copyTitle + '/Control Semi-Matched/Gender Separated/' + category + '/10x/FM' + str(z) + '.csv', index=False)
