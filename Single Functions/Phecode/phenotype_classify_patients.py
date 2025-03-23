@@ -7,7 +7,7 @@ version = '3.0'
 folderTitle = f'/Users/cameron/mimic-iv-{version}/hosp'
 copyTitle = f'/Users/cameron/mimic-iv-{version}/hosp copy'
 
-diagnosis_categories = pd.read_csv(copyTitle + '/d_icd_diagnoses_phenotype_category.csv')
+diagnosis_categories = pd.read_csv(copyTitle + '/d_icd_diagnoses_phenotype_category 1.2.csv')
 diagnosis_file = pd.read_csv(copyTitle + '/patient_diagnoses.csv')
 
 categories = {
@@ -30,4 +30,4 @@ for i in range(len(diagnosis_file)):
   
 # Write diagnosis_file
 header = list(diagnosis_file.columns)
-diagnosis_file.to_csv(copyTitle + '/patient_diagnoses_phecode_category.csv', columns = header)
+diagnosis_file.to_csv(copyTitle + '/patient_diagnoses_phecode_category 1.2.csv', columns = header)
