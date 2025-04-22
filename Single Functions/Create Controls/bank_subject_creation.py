@@ -1,3 +1,9 @@
+# Compiles the patients in the weight measurement file (with all other columns like fractures)
+# Every row is now a unique patient
+# If a patient has a history of any condition, it is set to true for this column
+# We take the median of age, weight, and other numerical values
+# Output: 61,779 unique patients
+
 import pandas as pd
 import numpy as np
 from datetime import datetime
@@ -7,7 +13,8 @@ version = '3.0'
 folderTitle = f'/Users/cameron/mimic-iv-{version}/hosp'
 copyTitle = f'/Users/cameron/mimic-iv-{version}/hosp copy'
 
-patient_diagnoses_file = pd.read_csv(copyTitle + '/fracture_patients_matching_bank.csv')
+patient_diagnoses_file = pd.read_csv(copyTitle + '/patient_data_fracture_flags_race 1.2.csv')
+# Change to "patient_data_fracture_flags_race 1.2.csv" to include fracture patients
 
 patient_data = {
   
@@ -67,7 +74,7 @@ for i in range(len(patient_diagnoses_file)):
   patient_id = patient_diagnoses_file['subject_id'][i]
   
   # do the same for the columns above
-  for col in ['circulatory system', 'congenital anomalies', 'dermatologic', 'digestive', 'endocrine/metabolic', 'genitourinary', 'hematopoietic', 'infectious diseases', 'injuries & poisonings','mental disorders','musculoskeletal', 'neoplasms', 'neurological', 'pregnancy complications','respiratory','sense organs','symptoms', 'Unknown']:
+  for col in ['circulatory system', 'congenital anomalies', 'dermatologic', 'digestive', 'endocrine/metabolic', 'genitourinary', 'hematopoietic', 'infectious diseases', 'injuries & poisonings','mental disorders','musculoskeletal', 'neoplasms', 'neurological', 'pregnancy complications','respiratory','sense organs','symptoms', 'Unknown', 'Pathologic fracture', 'Pathologic fracture of femur', 'Pathologic fracture of vertebrae', 'Malunion and nonunion of fracture', 'Fracture of tibia and fibula', 'Fracture of lower limb', 'Stress fracture', 'Fracture of unspecified part of femur', 'Fracture of neck of femur', 'Fracture of ankle and foot', 'Fracture of radius and ulna', 'Fracture of vertebral column without mention of spinal cord injury', 'Fracture of hand or wrist']:
     if patient_diagnoses_file.at[i, col]:
       if (patient_id not in patient_diagnoses_dict):
         patient_diagnoses_dict[patient_id] = {}
@@ -94,7 +101,13 @@ for i in range(len(patient_diagnoses_file)):
 patient_data_file = pd.DataFrame(columns=patient_diagnoses_file.columns)
 
 count = 0
+missed = 0
+
+print("Total", len(patient_data.keys()))
 for key in patient_data.keys():
+  
+  if (count % 2000 == 0):
+    print((count / len(patient_data.keys()) * 100), "percent", missed, "missed")
   
   (race, gender) = patient_demographic[key]
 
@@ -115,7 +128,8 @@ for key in patient_data.keys():
     for col in patient_diagnoses_dict[key]:
       patient_data_file.at[count, col] = True
   except KeyError:
-    print(f'No diagnoses for patient {key}')
+    # print(f'No diagnoses for patient {key}')
+    missed += 1
   
   count += 1
     
@@ -132,4 +146,6 @@ for col in ['Pathologic fracture', 'Pathologic fracture of femur', 'Pathologic f
   patient_data_file[col] = patient_data_file[col].fillna(False)
 
 # write
-patient_data_file.to_csv(copyTitle + '/patient_matching_bank.csv', index=False)
+patient_data_file.to_csv(copyTitle + '/patient_data_with_fracture_group.csv', index=False)
+
+# Patient_data_with_fracture_group: includes fracture patients in the count as well (did not run remove fractured patients)
