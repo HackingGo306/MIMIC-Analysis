@@ -81,4 +81,4 @@ tolerance = 150
 for z in range(10):
   print("\n--------------------------------", (z + 1), "--------------------------------\n")
   max_tol = match_patients(['race', 'gender', 'age', 'weight', 'height'], ['string', 'string', 'integer', 'integer', 'integer'], [0, 0, 0.3, 1, 0.6], tolerance, 'Master Patient Data/Malunion Fracture Control Group 1/batch' + str(z + 1) + '.csv')
-  # tolerance = max_tol + min(15, round(0.5 * tolerance))
+  # tolerance = max_tol + min(15, round(0.5 * tolerance)) 
