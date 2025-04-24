@@ -9,7 +9,8 @@ version = '3.0'
 folderTitle = f'/Users/cameron/mimic-iv-{version}/hosp'
 copyTitle = f'/Users/cameron/mimic-iv-{version}/hosp copy'
 
-bank = pd.read_csv(copyTitle + "/Master Patient Data/unique_patient_data_merged_control.csv")
+bank = pd.read_csv(copyTitle + "/Master Patient Data/unique_patient_data_merged_fracture.csv")
+bank = bank[bank['Malunion or nonunion of fracture'] == False]
 fractures = pd.read_csv(copyTitle + "/Master Patient Data/unique_patient_data_merged_malunion.csv")
 
 # for each row in fractures, check if the patient's data is in the bank_data dictionary  
@@ -77,7 +78,7 @@ def match_patients(columns, datatypes, relax_intervals, relaxation_threshold = 1
   return max_tolerance
   
 tolerance = 150
-for z in range(20):
+for z in range(10):
   print("\n--------------------------------", (z + 1), "--------------------------------\n")
-  max_tol = match_patients(['race', 'gender', 'age', 'weight', 'height'], ['string', 'string', 'integer', 'integer', 'integer'], [0, 0, 0.3, 1, 0.6], tolerance, 'Master Patient Data/Malunion Control Group 1/batch' + str(z + 1) + '.csv')
+  max_tol = match_patients(['race', 'gender', 'age', 'weight', 'height'], ['string', 'string', 'integer', 'integer', 'integer'], [0, 0, 0.3, 1, 0.6], tolerance, 'Master Patient Data/Malunion Fracture Control Group 1/batch' + str(z + 1) + '.csv')
   # tolerance = max_tol + min(15, round(0.5 * tolerance))
