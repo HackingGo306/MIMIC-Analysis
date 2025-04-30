@@ -12,4 +12,6 @@ print('Data for Modeling: ' + str(data.shape))
 print('Unseen Data For Predictions: ' + str(data_unseen.shape))
 exp_clf101 = setup(data = data, target = 'default', session_id=123) 
 
-compare_models()
+
+best = compare_models()
+plot_model(best, plot = 'feature')
