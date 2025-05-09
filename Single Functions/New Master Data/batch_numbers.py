@@ -7,7 +7,7 @@ version = '3.0'
 folderTitle = f'/Users/cameron/mimic-iv-{version}/hosp'
 copyTitle = f'/Users/cameron/mimic-iv-{version}/hosp copy'
 
-file = pd.read_csv(copyTitle + '/Master Patient Data/Malunion General Control Group 1/train_data.csv')
+file = pd.read_csv(copyTitle + '/Master Patient Data/Malunion General Control Group 2/train_data_2.csv')
 
 for i in range(len(file)):
   batch_val = file['batch'][i]
