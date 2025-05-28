@@ -49,6 +49,56 @@ selected_categories = [
 "Stress fracture",
 "Colles' fracture"
 ]
+
+
+selected_categories = [
+  # 20 most frequent diagnosis categories (removed those like "other" or unrelated)
+  "Essential hypertension",
+  "Hyperlipidemia",
+  "Tobacco use disorder",
+  "GERD",
+  "Acute renal failure",
+  "Coronary atherosclerosis",
+  "Type 2 diabetes",
+  "Anxiety disorder",
+  "Atrial fibrillation",
+  "Other anemias",
+  "Urinary tract infection",
+  "Major depressive disorder",
+  "Acute posthemorrhagic anemia",
+  "Hypothyroidism NOS",
+  "Hypovolemia",
+  "Obesity",
+  "Myocardial infarction",
+  "Respiratory failure",
+  "Hypertensive chronic kidney disease",
+  "Hyposmolality and/or hyponatremia",
+  
+  # 20 most freqeuent msk-related categories (with some repeats removed)
+  "Osteoarthrosis NOS",
+  "Osteoporosis NOS",
+  "Pain in joint",
+  "Spondylosis without myelopathy",
+  "Osteoarthrosis, localized, primary",
+  "Spinal stenosis",
+  "Spinal stenosis of lumbar region",
+  "Rheumatoid arthritis",
+  "Osteoarthritis; localized",
+  "Osteopenia or other disorder of bone and cartilage",
+  "Other disorders of bone and cartilage",
+  "Displacement of intervertebral disc",
+  "Arthropathy NOS",
+  "Unspecified osteomyelitis",
+  "Other disorders of soft tissues",
+  "Degeneration of intervertebral disc",
+  "Chronic osteomyelitis",
+  "Kyphoscoliosis and scoliosis",
+  "Acute osteomyelitis",
+  "Polymyalgia Rheumatica",
+]
+
+
+
 include = {}
 for cat in selected_categories:
   include[cat] = True
