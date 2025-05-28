@@ -23,7 +23,32 @@ patient_data = {
   
 }
 
-selected_categories = ['Pathologic fracture', 'Pathologic fracture of femur', 'Pathologic fracture of vertebrae', 'Malunion and nonunion of fracture', 'Fracture of tibia and fibula', 'Fracture of lower limb', 'Stress fracture', 'Fracture of unspecified part of femur', 'Fracture of neck of femur', 'Fracture of ankle and foot', 'Fracture of radius and ulna', 'Fracture of vertebral column without mention of spinal cord injury', 'Fracture of hand or wrist']
+# selected_categories = ['Pathologic fracture', 'Pathologic fracture of femur', 'Pathologic fracture of vertebrae', 'Malunion and nonunion of fracture', 'Fracture of tibia and fibula', 'Fracture of lower limb', 'Stress fracture', 'Fracture of unspecified part of femur', 'Fracture of neck of femur', 'Fracture of ankle and foot', 'Fracture of radius and ulna', 'Fracture of vertebral column without mention of spinal cord injury', 'Fracture of hand or wrist']
+selected_categories = [
+"Skull and face fracture and other intercranial injury",
+"Fracture of vertebral column without mention of spinal cord injury",
+"Fracture of ribs",
+"Fracture of unspecified part of femur",
+"Fracture of neck of femur",
+"Pathologic fracture",
+"Fracture of tibia and fibula",
+"Fracture of radius and ulna",
+"Pathologic fracture of vertebrae",
+"Fracture of pelvis",
+"Fracture of humerus",
+"Fracture of clavicle or scapula",
+"Fracture of ankle and foot",
+"Fracture of lower limb",
+"Fracture of foot",
+"Fracture of hand or wrist",
+"Fracture of unspecified bones",
+"Malunion and nonunion of fracture",
+"Fracture of patella",
+"Fracture of upper limb",
+"Pathologic fracture of femur",
+"Stress fracture",
+"Colles' fracture"
+]
 include = {}
 for cat in selected_categories:
   include[cat] = True
@@ -55,5 +80,6 @@ for i in range(len(patient_demographics)):
     pass # Not all patients have phecode diagnoses
     
 # Remove first column (column 1)
-patient_demographics.drop("Unnamed: 0", axis=1, inplace=True)
-patient_demographics.to_csv(copyTitle + "/All Patient Data/all_patient_data2s.csv", index=False)
+# patient_demographics.drop("Unnamed: 0", axis=1, inplace=True)
+
+patient_demographics.to_csv(copyTitle + "/All Patient Data/all_patient_data2.csv", index=False)
