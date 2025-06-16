@@ -81,6 +81,19 @@ lab_features = [
   "Thyroid Stimulating Hormone"
 ]
 
+# Add later:
+# P1NP
+# BSAP
+# Osteocalcin
+# CTX
+# NTX
+# TRACP-5b
+# Calcium
+# Phosphate
+# PTH
+# 25(OH)D
+# FGF23
+
 for i in range(len(lab_features)):
   feature_name = lab_features[i]
   labmedian = df[feature_name].mean()
